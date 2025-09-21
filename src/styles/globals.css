@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+/* Paleta de colores GTA 6 con tonos hacker verde-azul */
+:root {
+  /* Colores principales de GTA 6 */
+  --gta-purple: #8B5FBF;
+  --gta-pink: #FF6B9D;
+  --gta-blue: #4ECDC4;
+  --gta-orange: #FF8C42;
+  --gta-yellow: #FFD23F;
+  
+  /* Tonos azul informático */
+  --cyber-blue: #00D4FF;
+  --tech-blue: #0099CC;
+  --electric-blue: #0080FF;
+  --deep-blue: #003366;
+  --dark-blue: #001122;
+  --terminal-blue: #00AAFF;
+  
+  /* Gradientes */
+  --gradient-cyber: linear-gradient(135deg, var(--cyber-blue), var(--electric-blue));
+  --gradient-tech: linear-gradient(135deg, var(--tech-blue), var(--cyber-blue));
+  --gradient-gta: linear-gradient(135deg, var(--gta-purple), var(--gta-pink), var(--gta-blue));
+  --gradient-terminal: linear-gradient(180deg, var(--dark-blue), var(--deep-blue));
+}
+
+/* Reset y configuración base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+}
+
+html, body {
+  overflow: hidden; /* Scroll controlado por JS */
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  background: var(--dark-blue);
+  color: #ffffff;
+  overflow-x: hidden;
+  line-height: 1.8;
+  scroll-behavior: smooth;
+}
+
+/* Asegurar que el scroll comience desde arriba */
+body:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/* Efectos de glitch */
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.glitch {
+  animation: glitch 0.3s infinite;
+}
+
+/* Efecto de typing */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--hacker-green);
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+}
+
+/* Efecto matrix rain */
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.matrix-char {
+  position: absolute;
+  color: rgba(0, 212, 255, 0.4);
+  font-family: 'JetBrains Mono', monospace;
+  animation: matrix-rain linear infinite;
+  text-shadow: 0 0 2px rgba(0, 212, 255, 0.3);
+}
+
+/* Efectos de neon */
+.neon-text {
+  color: var(--cyber-blue);
+  text-shadow: 
+    0 0 3px var(--cyber-blue),
+    0 0 6px var(--cyber-blue),
+    0 0 9px var(--cyber-blue);
+}
+
+.neon-border {
+  border: 1px solid var(--cyber-blue);
+  box-shadow: 
+    0 0 3px rgba(0, 212, 255, 0.3),
+    inset 0 0 3px rgba(0, 212, 255, 0.1);
+  background: rgba(0, 17, 34, 0.8);
+}
+
+/* Efecto de scanlines */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 255, 65, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animación de pulso */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--hacker-green);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--hacker-green), 0 0 30px var(--hacker-green);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Efecto de terminal */
+.terminal {
+  background: rgba(0, 17, 34, 0.95);
+  border: 1px solid var(--terminal-blue);
+  border-radius: 8px;
+  padding: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--terminal-blue);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.terminal::before {
+  content: '●●●';
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: var(--cyber-blue);
+  font-size: 12px;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyber-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--electric-blue);
+}
+
+/* Utilidades */
+.bg-gradient-cyber {
+  background: var(--gradient-cyber);
+}
+
+.bg-gradient-tech {
+  background: var(--gradient-tech);
+}
+
+.bg-gradient-gta {
+  background: var(--gradient-gta);
+}
+
+.text-cyber-blue {
+  color: var(--cyber-blue);
+}
+
+.text-tech-blue {
+  color: var(--tech-blue);
+}
+
+.text-electric-blue {
+  color: var(--electric-blue);
+}
+
+.border-cyber-blue {
+  border-color: var(--cyber-blue);
+}
+
+/* Contenedores mejorados */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* Mejoras de spacing y alineación */
+.section-padding {
+  padding: 8rem 0;
+}
+
+/* Espaciado mejorado para párrafos */
+p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+/* Secciones de página completa controladas */
+.full-page-section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* Espaciado entre secciones - removido para scroll snap */
+section {
+  margin-bottom: 0;
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 255, 65, 0.2);
+}
+
+/* Centrado mejorado */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.center-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Espaciado consistente */
+.section-title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.section-description {
+  margin-bottom: 3rem;
+  text-align: center;
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mejoras responsive para centrado */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-description {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .terminal {
+    padding: 15px;
+  }
+  
+  /* Ajustes para scroll snap en móvil */
+  .snap-section {
+    scroll-snap-align: start;
+    padding: 1rem;
+  }
+  
+  html {
+    scroll-snap-type: y proximity; /* Menos estricto en móvil */
+  }
+}
+
+/* Mejoras para scroll snap */
+@media (hover: hover) {
+  .snap-section:hover {
+    scroll-snap-align: start;
+  }
+}
