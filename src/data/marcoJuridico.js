@@ -107,12 +107,6 @@ export const MARCO_JURIDICO_CONTENT = {
         texto: "En la misma pena incurrirá el que alterare, destruyere o inutilizare datos, documentos, programas o sistemas informáticos; o vendiere, distribuyere, hiciere circular o introdujere en un sistema informático, cualquier programa destinado a causar daños. (Párrafo incorporado por art. 10 de la Ley N° 26.388, B.O. 25/6/2008)"
       },
       {
-        titulo: "Artículo 184 inc. 5° - Código Penal",
-        penaSimple: "Pena: 3 meses a 4 años de prisión",
-        explicacion: "Agravante por afectar sistemas informáticos públicos",
-        texto: "La pena será de tres (3) meses a cuatro (4) años de prisión, si mediare cualquiera de las circunstancias siguientes: ejecutarlo en archivos, registros, bibliotecas, museos o en puentes, caminos, paseos u otros bienes de uso público; o en tumbas, signos conmemorativos, monumentos, estatuas, cuadros u otros objetos de arte colocados en edificios o lugares públicos; o en datos, documentos, programas o sistemas informáticos públicos;"
-      },
-      {
         titulo: "Artículo 168 - Código Penal (Extorsión)",
         penaSimple: "Pena: 5 a 10 años de prisión",
         explicacion: "Por obligar a entregar algo mediante intimidación",

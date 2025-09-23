@@ -118,7 +118,7 @@ Derecho privado:
       },
       {
         title: "Domicilio y Jurisdicción",
-        description: "El domicilio de ambas partes determina jurisdicción e intervención del derecho internacional"
+        description: "El domicilio de ambas partes determina jurisdicción e intervención del derecho internacional. El de Rockstar siendo en EEUU NY y el del hacker en un hotel de UK"
       }
     ]
   }
