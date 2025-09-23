@@ -24,22 +24,13 @@
   --gradient-terminal: linear-gradient(180deg, var(--dark-blue), var(--deep-blue));
 }
 
-/* Reset y configuración base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 0;
 }
 
 html, body {
-  overflow: hidden; /* Scroll controlado por JS */
   position: relative;
-  height: 100%;
   width: 100%;
 }
 
@@ -171,44 +162,7 @@ body:before {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Efecto de terminal */
-.terminal {
-  background: rgba(0, 17, 34, 0.95);
-  border: 1px solid var(--terminal-blue);
-  border-radius: 8px;
-  padding: 20px;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--terminal-blue);
-  position: relative;
-  backdrop-filter: blur(10px);
-}
 
-.terminal::before {
-  content: '●●●';
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  color: var(--cyber-blue);
-  font-size: 12px;
-}
-
-/* Scrollbar personalizado */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--dark-blue);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--cyber-blue);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--electric-blue);
-}
 
 /* Utilidades */
 .bg-gradient-cyber {
@@ -281,16 +235,6 @@ body:before {
   padding: 8rem 0;
 }
 
-/* Espaciado mejorado para párrafos */
-p {
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 2rem;
-  line-height: 1.3;
-}
 
 /* Secciones de página completa controladas */
 .full-page-section {

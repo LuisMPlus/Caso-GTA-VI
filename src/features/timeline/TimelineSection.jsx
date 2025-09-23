@@ -1,230 +1,164 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Calendar, Clock, AlertTriangle, Shield, Eye, Gavel } from 'lucide-react';
+import { Calendar, Clock, ChevronRight, AlertTriangle } from 'lucide-react';
+import { TIMELINE_EVENTS } from '../../data/constants';
 
 const TimelineSection = () => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [expandedEvent, setExpandedEvent] = useState(null);
 
-  const timelineEvents = [
-    {
-      id: 1,
-      date: '17 Sep 2022',
-      time: '22:00 UTC',
-      title: 'Acceso Inicial',
-      description: 'Primer acceso no autorizado detectado en sistemas de Rockstar',
-      details: 'El atacante logró acceso inicial mediante credenciales comprometidas obtenidas a través de ingeniería social. Se detectaron patrones anómalos de acceso en los logs del sistema.',
-      icon: AlertTriangle,
-      severity: 'high',
-      category: 'breach'
-    },
-    {
-      id: 2,
-      date: '18 Sep 2022',
-      time: '02:30 UTC',
-      title: 'Infiltración en Slack',
-      description: 'Acceso a canales internos de comunicación',
-      details: 'El atacante accedió a múltiples canales de Slack internos, incluyendo canales de desarrollo y QA. Se observó actividad de reconocimiento y mapeo de la infraestructura interna.',
-      icon: Eye,
-      severity: 'critical',
-      category: 'escalation'
-    },
-    {
-      id: 3,
-      date: '18 Sep 2022',
-      time: '08:15 UTC',
-      title: 'Exfiltración Masiva',
-      description: 'Inicio de descarga masiva de archivos multimedia',
-      details: 'Comenzó la descarga sistemática de videos de desarrollo, capturas de pantalla y fragmentos de código fuente. Se transfirieron aproximadamente 3TB de datos.',
-      icon: Shield,
-      severity: 'critical',
-      category: 'exfiltration'
-    },
-    {
-      id: 4,
-      date: '18 Sep 2022',
-      time: '14:20 UTC',
-      title: 'Primera Publicación',
-      description: 'Aparición de videos filtrados en GTAForums',
-      details: 'Los primeros 90 videos de gameplay de GTA VI aparecen en el foro GTAForums. La comunidad gaming mundial reacciona con shock y emoción.',
-      icon: Calendar,
-      severity: 'high',
-      category: 'disclosure'
-    },
-    {
-      id: 5,
-      date: '18 Sep 2022',
-      time: '16:45 UTC',
-      title: 'Notificación a Rockstar',
-      description: 'Rockstar Games es notificado oficialmente del breach',
-      details: 'El equipo de seguridad de Rockstar confirma la autenticidad de los materiales filtrados y activa protocolos de respuesta a incidentes.',
-      icon: AlertTriangle,
-      severity: 'medium',
-      category: 'response'
-    },
-    {
-      id: 6,
-      date: '18 Sep 2022',
-      time: '18:00 UTC',
-      title: 'Contención',
-      description: 'Accesos comprometidos deshabilitados',
-      details: 'Se revocan todos los accesos sospechosos, se implementa autenticación multifactor adicional y se inicia auditoría completa de sistemas.',
-      icon: Shield,
-      severity: 'medium',
-      category: 'containment'
-    },
-    {
-      id: 7,
-      date: '19 Sep 2022',
-      time: '09:30 UTC',
-      title: 'Declaración Oficial',
-      description: 'Rockstar confirma públicamente el incidente',
-      details: 'Rockstar Games publica una declaración oficial confirmando el breach y asegurando que no se vio comprometida información de jugadores.',
-      icon: Calendar,
-      severity: 'low',
-      category: 'communication'
-    },
-    {
-      id: 8,
-      date: '19 Sep 2022',
-      time: '12:00 UTC',
-      title: 'Investigación FBI',
-      description: 'FBI inicia investigación criminal',
-      details: 'Las autoridades federales estadounidenses inician una investigación criminal formal. Se coordina con autoridades internacionales.',
-      icon: Gavel,
-      severity: 'medium',
-      category: 'investigation'
-    },
-    {
-      id: 9,
-      date: '20 Sep 2022',
-      time: '15:30 UTC',
-      title: 'Arresto',
-      description: 'Arresto del sospechoso principal',
-      details: 'Un adolescente de 17 años es arrestado en el Reino Unido en conexión con el hack. Se incautan equipos y se inicia proceso legal.',
-      icon: Gavel,
-      severity: 'low',
-      category: 'resolution'
-    },
-    {
-      id: 10,
-      date: '14 Dec 2023',
-      time: '10:00 UTC',
-      title: 'Sentencia',
-      description: 'Sentencia final: 5 años en institución segura',
-      details: 'El tribunal sentenció al hacker, ahora de 18 años, a permanecer en una institución médica segura por tiempo indefinido debido a su intención declarada de continuar con actividades cibercriminales.',
-      icon: Gavel,
-      severity: 'low',
-      category: 'resolution'
-    }
-  ];
+  const timelineEvents = TIMELINE_EVENTS;
 
-  const getSeverityColor = (severity) => {
+  const getSeverityIcon = (severity) => {
     switch (severity) {
-      case 'critical': return 'text-red-500 border-red-500';
-      case 'high': return 'text-orange-500 border-orange-500';
-      case 'medium': return 'text-yellow-500 border-yellow-500';
-      case 'low': return 'text-green-500 border-green-500';
-      default: return 'text-gray-500 border-gray-500';
+      case 'critical': return '🔴';
+      case 'high': return '🟠';
+      case 'medium': return '🟡';
+      case 'low': return '🟢';
+      default: return '⚪';
     }
   };
 
-  const getCategoryColor = (category) => {
-    switch (category) {
-      case 'breach': return 'bg-red-900/30';
-      case 'escalation': return 'bg-orange-900/30';
-      case 'exfiltration': return 'bg-purple-900/30';
-      case 'disclosure': return 'bg-pink-900/30';
-      case 'response': return 'bg-blue-900/30';
-      case 'containment': return 'bg-cyan-900/30';
-      case 'communication': return 'bg-indigo-900/30';
-      case 'investigation': return 'bg-yellow-900/30';
-      case 'resolution': return 'bg-green-900/30';
-      default: return 'bg-gray-900/30';
+  const getSeverityColor = (severity) => {
+    switch (severity) {
+      case 'critical': return 'border-red-500 bg-red-500/10';
+      case 'high': return 'border-orange-500 bg-orange-500/10';
+      case 'medium': return 'border-yellow-500 bg-yellow-500/10';
+      case 'low': return 'border-green-500 bg-green-500/10';
+      default: return 'border-gray-500 bg-gray-500/10';
     }
   };
 
   return (
-    <section id="timeline" className="full-page-section bg-gradient-to-b from-gray-900 to-black relative overflow-hidden py-8">
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="timeline" className="bg-gradient-to-b from-gray-900 via-gray-900 to-black py-20">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
             Línea de Tiempo del Incidente
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Cronología detallada del hackeo más significativo en la historia de los videojuegos
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Cronología detallada del hackeo que sacudió a la industria de los videojuegos
           </p>
-          
-          <br />
-          <br />
         </motion.div>
 
-        <div className="max-w-7xl mx-auto flex-1 flex flex-col justify-center">
-          {/* Timeline principal */}
-          <div className="relative px-4 max-h-[70vh] overflow-y-auto">
-            {/* Línea central */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyber-blue to-electric-blue shadow-lg shadow-cyber-blue/50"></div>
+        <div className=" mx-auto">
+          {/* Timeline en zigzag con línea central */}
+          <div className="relative">
+            {/* Línea central vertical */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#ffb90f] via-[#E68B4E] to-[#4EADE6] shadow-lg hidden md:block"></div>
+            {/* Línea izquierda para móvil */}
+            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-[#ffb90f] via-[#E68B4E] to-[#4EADE6] shadow-lg md:hidden"></div>
 
-            {timelineEvents.slice(0, 6).map((event, index) => (
+            {timelineEvents.map((event, index) => (
               <motion.div
                 key={event.id}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative flex items-center mb-8 ${
-                  index % 2 === 0 ? 'flex-row-reverse' : ''
+                className={`relative flex items-center mb-12 ${
+                  index % 2 === 0 ? 'md:justify-start justify-start' : 'md:justify-end justify-start'
                 }`}
               >
                 {/* Contenido del evento */}
-                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'pl-8'}`}>
+                <div className={`md:w-5/12 w-full ${
+                  index % 2 === 0 ? 'md:pr-8 ml-20 md:ml-0' : 'md:pl-8 ml-20 md:ml-0'
+                }`}>
                   <motion.div
-                    className={`p-8 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg ${getCategoryColor(event.category)} ${getSeverityColor(event.severity)} ${
-                      selectedEvent === event.id ? 'ring-2 ring-hacker-cyan' : ''
-                    }`}
-                    onClick={() => setSelectedEvent(selectedEvent === event.id ? null : event.id)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className={`
+                      p-6 rounded-xl border-2 transition-all duration-300 cursor-pointer
+                      ${getSeverityColor(event.severity)}
+                      hover:scale-105 hover:shadow-xl
+                      ${expandedEvent === event.id ? 'ring-2 ring-[#ffb90f]/50' : ''}
+                      ${index % 2 === 0 ? 'md:text-left text-left' : 'md:text-right text-left'}
+                    `}
+                    onClick={() => setExpandedEvent(expandedEvent === event.id ? null : event.id)}
+                    whileHover={{ y: -3 }}
                   >
-                    <div className="flex items-center mb-3">
-                      <event.icon className={`w-6 h-6 mr-3 ${getSeverityColor(event.severity).split(' ')[0]}`} />
-                      <div>
-                        <h3 className="text-xl font-bold text-white">{event.title}</h3>
-                        <div className="flex items-center text-sm text-gray-400 mt-1">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          <span>{event.date}</span>
-                          <Clock className="w-4 h-4 ml-3 mr-1" />
-                          <span>{event.time}</span>
+                    {/* Header del evento */}
+                    <div className={`flex items-start mb-4 ${
+                      index % 2 === 0 ? 'md:flex-row flex-row' : 'md:flex-row-reverse flex-row'
+                    }`}>
+                      <div className={`flex items-center space-x-3 ${
+                        index % 2 === 0 ? 'md:space-x-3 space-x-3' : 'md:flex-row-reverse md:space-x-reverse flex-row space-x-3'
+                      }`}>
+                        <span className="text-2xl">{event.icon}</span>
+                        <div className={index % 2 === 0 ? 'md:text-left text-left' : 'md:text-right text-left'}>
+                          <h3 className="text-xl font-bold text-white mb-1">{event.title}</h3>
+                          <div className={`flex items-center text-sm text-gray-400 space-x-3 ${
+                            index % 2 === 0 ? 'md:justify-start justify-start' : 'md:justify-end md:flex-row-reverse md:space-x-reverse justify-start flex-row space-x-3'
+                          }`}>
+                            <div className="flex items-center">
+                              <Calendar className="w-4 h-4 mr-1" />
+                              {event.date}
+                            </div>
+                            <div className="flex items-center">
+                              <Clock className="w-4 h-4 mr-1" />
+                              {event.time}
+                            </div>
+                            <div className="flex items-center">
+                              <span className="mr-1">{getSeverityIcon(event.severity)}</span>
+                              <span className="capitalize">{event.severity}</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                      <motion.div
+                        animate={{ rotate: expandedEvent === event.id ? 90 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className={index % 2 === 0 ? 'md:ml-auto ml-auto' : 'md:mr-auto ml-auto'}
+                      >
+                        <ChevronRight className="w-5 h-5 text-gray-400" />
+                      </motion.div>
                     </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed">{event.description}</p>
-                    
-                    <br />
-                    
-                    {selectedEvent === event.id && (
+
+                    {/* Descripción */}
+                    <p className="text-gray-300 leading-relaxed mb-3">
+                      {event.description}
+                    </p>
+
+                    {/* Detalles expandibles */}
+                    {expandedEvent === event.id && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
-                        className="border-t border-gray-600 pt-3 mt-3"
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="border-t border-gray-600 pt-4 mt-4"
                       >
-                        <p className="text-sm text-gray-400">{event.details}</p>
+                        <div className="bg-gray-800/50 p-4 rounded-lg">
+                          <h4 className="font-semibold text-white mb-2 flex items-center">
+                            <AlertTriangle className="w-4 h-4 mr-2 text-yellow-500" />
+                            Detalles del Incidente
+                          </h4>
+                          <p className="text-gray-300 text-sm leading-relaxed">
+                            {event.details}
+                          </p>
+                        </div>
                       </motion.div>
                     )}
                   </motion.div>
                 </div>
 
-                {/* Punto central */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-cyber-blue bg-black z-10">
-                  <div className="absolute inset-1 rounded-full bg-cyber-blue animate-pulse"></div>
+                {/* Punto central en la línea - Desktop */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-gray-900 bg-gradient-to-r from-[#ffb90f] to-[#E68B4E] shadow-lg z-10 hidden md:block">
+                  <div className="absolute inset-1 rounded-full bg-gradient-to-r from-[#ffb90f] to-[#E68B4E] animate-pulse"></div>
                 </div>
 
-                {/* Espacio vacío del otro lado */}
-                <div className="w-5/12"></div>
+                {/* Punto izquierdo en la línea - Móvil */}
+                <div className="absolute left-6 w-6 h-6 rounded-full border-4 border-gray-900 bg-gradient-to-r from-[#ffb90f] to-[#E68B4E] shadow-lg z-10 md:hidden">
+                  <div className="absolute inset-1 rounded-full bg-gradient-to-r from-[#ffb90f] to-[#E68B4E] animate-pulse"></div>
+                </div>
+
+                {/* Línea conectora al punto central - Solo Desktop */}
+                <div className={`absolute top-1/2 transform -translate-y-1/2 h-0.5 bg-gradient-to-r hidden md:block ${
+                  index % 2 === 0 
+                    ? 'right-1/2 mr-3 from-transparent to-[#ffb90f] w-8' 
+                    : 'left-1/2 ml-3 from-[#ffb90f] to-transparent w-8'
+                }`}></div>
               </motion.div>
             ))}
           </div>
@@ -235,29 +169,29 @@ const TimelineSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-24 flex justify-center"
+          className="mt-20"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <motion.div 
-              className="text-center p-8 neon-border rounded-xl bg-black/90 backdrop-blur-sm hover:bg-black/95 transition-all duration-300"
+              className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700 hover:border-[#ffb90f]/50 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -5 }}
             >
-              <div className="text-4xl font-bold text-red-500 mb-3">456 días</div>
-              <div className="text-gray-400 text-lg font-mono">Duración total del caso</div>
+              <div className="text-3xl font-bold text-red-400 mb-2">456 días</div>
+              <div className="text-gray-400 text-sm">Duración total del caso</div>
             </motion.div>
             <motion.div 
-              className="text-center p-8 neon-border rounded-xl bg-black/90 backdrop-blur-sm hover:bg-black/95 transition-all duration-300"
+              className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700 hover:border-[#ffb90f]/50 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -5 }}
             >
-              <div className="text-4xl font-bold text-cyber-blue mb-3">$5B+</div>
-              <div className="text-gray-400 text-lg font-mono">Impacto económico estimado</div>
+              <div className="text-3xl font-bold text-[#4EADE6] mb-2">$5B+</div>
+              <div className="text-gray-400 text-sm">Impacto económico estimado</div>
             </motion.div>
             <motion.div 
-              className="text-center p-8 neon-border rounded-xl bg-black/90 backdrop-blur-sm hover:bg-black/95 transition-all duration-300"
+              className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700 hover:border-[#ffb90f]/50 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -5 }}
             >
-              <div className="text-4xl font-bold text-yellow-500 mb-3">Global</div>
-              <div className="text-gray-400 text-lg font-mono">Alcance mediático</div>
+              <div className="text-3xl font-bold text-[#ffb90f] mb-2">Global</div>
+              <div className="text-gray-400 text-sm">Alcance mediático</div>
             </motion.div>
           </div>
         </motion.div>

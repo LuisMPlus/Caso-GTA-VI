@@ -37,7 +37,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="full-page-section relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black pt-20">
+    <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black pt-20 min-h-screen">
 
       {/* Overlay de gradiente */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60" />
