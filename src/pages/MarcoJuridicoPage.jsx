@@ -114,6 +114,26 @@ const MarcoJuridicoPage = () => {
             <p className="text-gray-300">{estructuraLegal.principios}</p>
             <p className="text-gray-300">{estructuraLegal.estadoDerecho}</p>
 
+            {/* Imagen de la Ley Argentina */}
+            <div className="flex justify-center my-8">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="relative group"
+              >
+                <img
+                  src="/assets/imgs/ley-argentina.jpg"
+                  alt="Sistema Legal Argentino - Constitución y Marco Jurídico"
+                  className="max-w-full h-auto rounded-xl shadow-2xl border border-gray-600 group-hover:border-purple-400/50 transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+                <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="text-white text-sm font-semibold">Sistema Legal Argentino</p>
+                  <p className="text-gray-300 text-xs">Fundamentos constitucionales y marco jurídico aplicable</p>
+                </div>
+              </motion.div>
+            </div>
+
             <div className="bg-gray-700/50 rounded-lg p-6">
               <h4 className="text-xl font-bold text-yellow-400 mb-4">
                 {estructuraLegal.aplicacionPoderes.title}
@@ -175,6 +195,26 @@ const MarcoJuridicoPage = () => {
               </div>
             ))}
           </div>
+
+          {/* Imagen de Derecho Intelectual */}
+          <div className="flex justify-center mt-8">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              className="relative group max-w-lg"
+            >
+              <img
+                src="/assets/imgs/derecho-intelectual.png"
+                alt="Derecho de Propiedad Intelectual - Protección de Obras y Creaciones"
+                className="w-full h-auto rounded-xl shadow-2xl border border-gray-600 group-hover:border-green-400/50 transition-all duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+              <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white text-sm font-semibold">Derecho de Propiedad Intelectual</p>
+                <p className="text-gray-300 text-xs">Protección de derechos de autor y propiedad industrial</p>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Sección 4: Consideraciones Especiales */}
@@ -233,6 +273,26 @@ const MarcoJuridicoPage = () => {
             <h2 className="text-3xl font-bold text-red-400">
               {marcoJuridicoAplicable.title}
             </h2>
+          </div>
+
+          {/* Imagen de Derecho Penal */}
+          <div className="flex justify-center mb-8">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              className="relative group max-w-lg"
+            >
+              <img
+                src="/assets/imgs/derecho-penal.webp"
+                alt="Derecho Penal - Código Penal Argentino y Delitos Informáticos"
+                className="w-full h-auto rounded-xl shadow-2xl border border-gray-600 group-hover:border-red-400/50 transition-all duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+              <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white text-sm font-semibold">Derecho Penal</p>
+                <p className="text-gray-300 text-xs">Código Penal Argentino y delitos informáticos aplicables</p>
+              </div>
+            </motion.div>
           </div>
 
           <div className="space-y-4">
