@@ -114,12 +114,39 @@ const CierrePage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="text-center p-8 bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-xl border border-green-600/30"
+          className="text-center p-8 bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-xl border border-green-600/30 mb-12"
         >
           <h3 className="text-2xl font-bold text-green-400 mb-4">🎯 Análisis Completado</h3>
           <p className="text-gray-300 max-w-3xl mx-auto">
             Este análisis integral del caso GTA VI nos proporciona valiosas lecciones sobre ciberseguridad, 
             derecho digital y las complejas implicaciones legales en la era tecnológica moderna.
+          </p>
+        </motion.div>
+
+        {/* Sección del QR Code */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+          className="text-center p-8 bg-gray-800/50 rounded-xl border border-gray-700"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+            📱 Accede a esta Investigación
+          </h3>
+          <p className="text-gray-300 mb-8 text-lg">
+            Escanea el código QR para visitar esta página desde tu dispositivo móvil
+          </p>
+          <div className="flex justify-center">
+            <div className="bg-white p-6 rounded-xl shadow-2xl">
+              <img 
+                src="/assets/imgs/qr.png" 
+                alt="QR Code para acceder a la investigación del caso GTA VI"
+                className="w-48 h-48 sm:w-56 sm:h-56 mx-auto"
+              />
+            </div>
+          </div>
+          <p className="text-gray-400 mt-6 text-sm">
+            Código QR con enlace directo a la investigación completa
           </p>
         </motion.div>
       </div>
