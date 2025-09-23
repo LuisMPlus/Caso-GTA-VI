@@ -128,8 +128,8 @@ const HeroSection = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <AlertTriangle className="w-10 h-10 text-red-500 mb-4 mx-auto group-hover:text-red-400 transition-colors duration-300" />
-                  <div className="text-3xl font-bold text-red-500 mb-2">
-                    $5 Mil Millones
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-red-500 mb-2">
+                    $5 mil mill.
                   </div>
                   <div className="text-sm text-gray-400 font-mono">
                     Impacto Estimado
