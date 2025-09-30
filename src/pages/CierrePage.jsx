@@ -109,20 +109,6 @@ const CierrePage = () => {
           );
         })}
 
-        {/* Mensaje final */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="text-center p-8 bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-xl border border-green-600/30 mb-12"
-        >
-          <h3 className="text-2xl font-bold text-green-400 mb-4">🎯 Análisis Completado</h3>
-          <p className="text-gray-300 max-w-3xl mx-auto">
-            Este análisis integral del caso GTA VI nos proporciona valiosas lecciones sobre ciberseguridad, 
-            derecho digital y las complejas implicaciones legales en la era tecnológica moderna.
-          </p>
-        </motion.div>
-
         {/* Sección del QR Code */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

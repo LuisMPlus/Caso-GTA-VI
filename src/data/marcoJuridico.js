@@ -68,7 +68,7 @@ export const MARCO_JURIDICO_CONTENT = {
     areas: [
       {
         nombre: "Derecho Penal",
-        descripcion: "El chantaje, el acceso ilegítimo al sistema informático VIOLAN EL CÓDIGO PENAL ARGENTINO."
+        descripcion: "La extorsión, el acceso ilegítimo al sistema informático VIOLAN EL CÓDIGO PENAL ARGENTINO."
       },
       {
         nombre: "Derecho Procesal",
@@ -139,35 +139,57 @@ export const MARCO_JURIDICO_CONTENT = {
     ]
   },
 
-  procedimientoInvestigativo: {
-    title: "Procedimiento investigativo en Argentina",
-    concepto: "El derecho procesal es una rama del derecho público que regula cómo se lleva a cabo un proceso judicial. Es decir, establece las normas, etapas, actos y procedimientos que deben seguirse para que un tribunal pueda impartir justicia de manera legítima y ordenada.",
-    subtitulo: "Procedimiento investigativo en Argentina (caso GTA VI)",
-    etapas: [
-      {
-        titulo: "Denuncia",
-        descripcion: "Presentada en la Fiscalía especializada en ciberdelitos (UFECI). Se aporta material filtrado y links."
+  contratos: {
+    title: "Aplicación de Contratos en este caso",
+    imagen: "/assets/imgs/contrato.webp",
+    introduccion: "Los contratos juegan un papel fundamental en las relaciones digitales y en las obligaciones entre partes en el entorno tecnológico.",
+    partes: {
+      rockstar: {
+        titulo: "a) Rockstar Games",
+        contenido: [
+          "Rockstar tiene contratos electrónicos y de consumo con sus usuarios: cuando un jugador compra un juego o usa un servicio, acepta los Términos y Condiciones (contrato).",
+          "Estos términos incluyen cláusulas sobre propiedad intelectual, uso autorizado, prohibición de distribución no autorizada, etc.",
+          "El contrato electrónico se forma cuando el usuario acepta esas condiciones al instalar o jugar el juego."
+        ]
       },
-      {
-        titulo: "Peritos y cadena de custodia",
-        descripcion: "Informáticos forenses hacen imágenes de discos/dispositivos. Todo se sella y documenta para preservar validez judicial."
-      },
-      {
-        titulo: "Medidas cautelares",
-        descripcion: "Allanamientos digitales/físicos. Bloqueo de cuentas, accesos y fondos vinculados."
-      },
-      {
-        titulo: "Evidencia técnica",
-        descripcion: "Logs, IPs, accesos, backups. Copias certificadas de foros y archivos filtrados."
-      },
-      {
-        titulo: "Cooperación internacional",
-        descripcion: "Solicitudes a Google, Microsoft, Discord, etc."
-      },
-      {
-        titulo: "Etapas procesales",
-        descripcion: "Investigación preliminar → instrucción → acusación → juicio."
+      hacker: {
+        titulo: "b) Hacker",
+        contenido: [
+          "El hacker no actuó dentro del marco de un contrato típico con Rockstar, sino que violó los términos y las leyes.",
+          "Si hubiera tenido un vínculo contractual con Rockstar (por ejemplo, como empleado, tester o proveedor), habría tenido obligaciones contractuales adicionales, y Rockstar podría demandarlo por incumplimiento contractual además de responsabilidad civil."
+        ]
       }
-    ]
+    },
+    elementos: {
+      titulo: "Elementos del contrato en el entorno digital",
+      introduccion: "Para que haya contrato entre Rockstar y el hacker, tendría que cumplirse:",
+      requisitos: [
+        {
+          elemento: "Capacidad",
+          descripcion: "el hacker debe ser mayor de edad y no estar incapacitado. Si es menor, hay limitaciones legales."
+        },
+        {
+          elemento: "Consentimiento",
+          descripcion: "debe existir acuerdo de ambas partes. En este caso, no hay consentimiento: el hacker no aceptó legalmente una obligación con Rockstar, sino que actuó ilegalmente."
+        },
+        {
+          elemento: "Objeto",
+          descripcion: "distribución o acceso al código del juego. Aquí el objeto fue vulnerado."
+        },
+        {
+          elemento: "Causa",
+          descripcion: "la razón sería el uso legítimo de un servicio. Pero aquí el hacker actuó fuera de ese marco."
+        }
+      ],
+      conclusion: "Por lo tanto, no existe un contrato válido entre Rockstar y el hacker en cuanto a esa acción específica. Lo que existe es una infracción a los contratos y leyes vigentes."
+    },
+    excepciones: {
+      titulo: "Excepciones y relevancia legal",
+      puntos: [
+        "Según el Art. 1116 del CCyC, el derecho a devolución no aplica a software ya descargado o abierto. Esto protege a empresas como Rockstar.",
+        "En este caso, Rockstar no tendría obligación de devolver dinero al hacker, sino al contrario: puede exigir indemnización.",
+        "El hacker tampoco puede invocar un contrato que le permita difundir material filtrado."
+      ]
+    }
   }
 };
